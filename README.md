@@ -1,5 +1,3 @@
-# GenSign
-
 <div align="center">
 
 ## Enabling Supervised Learning of Generative Signatures for Generalized AI-Generated Images Detection
