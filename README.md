@@ -24,7 +24,7 @@ University of Florence · Sun Yat-sen University · Jinan University
 
 
 
-## DAIR Simulator
+## 1. DAIR Simulator
 
 The Dynamic-Architecture Image Reconstructor (DAIR) used in this project is released as an independent repository:
 
@@ -34,7 +34,7 @@ Please refer to the DAIR repository for details regarding the simulator implemen
 
 
 
-## GenSign Extractor
+## 2. GenSign Extractor
 
 `gensign_extractor` is a lightweight fully convolutional network for directly extracting (predicting) a hidden noise pattern. The model is based on `DenoisingFCNWithSkip`.
 
@@ -65,7 +65,7 @@ python extract_gensign.py \
 The extracted results are saved in `output_dir` as `<original_filename>_noise.png`, with one extracted noise image per input image.
 
 
-## The Dual Detector
+## 3. The Dual Detector
 ### Pretrained Checkpoints
 
 We provide checkpoints trained on different datasets:
