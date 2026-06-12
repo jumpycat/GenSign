@@ -18,9 +18,7 @@ University of Florence · Sun Yat-sen University · Jinan University
 - [x] Training code
 - [x] Pretrained checkpoints
 - [x] Additional documentation
-
-### Coming Soon
-- [ ] Evaluation code
+- [x] Evaluation code
 
 ---
 
@@ -77,6 +75,56 @@ We provide checkpoints trained on different datasets:
 | GenImage-SD1.4 | [Link](https://drive.google.com/file/d/13_gaGNLMXoiA4Wbg8IHFwPBtMHm4zloK/view?usp=drive_link) |
 | ProGAN (4-class) | [Link](https://drive.google.com/file/d/18unjmMmRUsGDhcYx8OyctZL0ytMR2wjZ/view?usp=drive_link) |
 | ProGAN (20-class) | [Link](https://drive.google.com/file/d/1zRL5934GDEnFtUUuSL59RukKjC_Pwfab/view?usp=drive_link) |
+
+
+### Overview
+
+The Dual Detector is the core classification framework that fuses semantic features and generative signature features to detect AI-generated images. It employs a two-stream architecture:
+1. **Stream 1 (Semantic):** A pre-trained CLIP vision model fine-tuned using LoRA.
+2. **Stream 2 (Signature):** A frozen GenSign Extractor (`noiser`) coupled with an EfficientNet backbone to process generative noise residuals.
+
+During training, the model dynamically leverages the DAIR Simulator to perform targeted data augmentation, improving generalization across different generative models.
+
+### Code Structure
+
+- **`dual_model.py`**: Defines the `DualStreamModel` architecture, LoRA injection, and the feature fusion head.
+- **`datasets.py`**: Modularized dataset classes and loaders handling real/fake label mapping and transformations.
+- **`eval_utils.py` & `utils.py`**: Modular evaluation logic for computing Accuracy, AUC, and AP, alongside utility functions.
+- **`train_genimg.py`**: Training pipeline tailored for the GenImage dataset structure.
+- **`train_progan.py`**: Training pipeline tailored for the ProGAN dataset structure (e.g., CNNDetection) with multi-dataset evaluation.
+
+### Training
+
+To train the Dual Detector, you must provide the pre-trained checkpoints for both the DAIR simulator (for data augmentation) and the GenSign Extractor (as the frozen feature extractor for Stream 2).
+
+**Training on GenImage:**
+
+```
+python train_genimg.py \
+    --train_dir /path/to/GenImage/train \
+    --val_dir /path/to/GenImage/val \
+    --eval_datasets_root /path/to/GenImage/valdata \
+    --ae_resume /path/to/dair_simulator.pth \
+    --noiser_resume /path/to/gensign_extractor.pth \
+    --stream1_model openai/clip-vit-large-patch14 \
+    --stream2_model efficientnet-b0 \
+    --aug_target all \
+    --aug_prob 0.2 \
+    --batch_size 8
+```
+
+```
+python train_progan.py \
+    --train_dir /path/to/progan_train \
+    --train_subfolders car cat chair horse \
+    --ae_resume /path/to/dair_simulator.pth \
+    --noiser_resume /path/to/gensign_extractor.pth \
+    --stream1_model openai/clip-vit-large-patch14 \
+    --stream2_model efficientnet-b0 \
+    --aug_target all \
+    --aug_prob 0.2 \
+    --batch_size 8
+``` 
 
 ### Notes
 
