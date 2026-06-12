@@ -15,16 +15,16 @@ University of Florence · Sun Yat-sen University · Jinan University
 ## Repository Status
 
 ### Available
-
 - [x] Training code
+- [x] Pretrained checkpoints
+- [x] Additional documentation
 
 ### Coming Soon
-
 - [ ] Evaluation code
-- [ ] Pretrained checkpoints
-- [ ] Additional documentation
 
 ---
+
+
 
 ## DAIR Simulator
 
@@ -33,6 +33,8 @@ The Dynamic-Architecture Image Reconstructor (DAIR) used in this project is rele
 https://github.com/jumpycat/DAIR
 
 Please refer to the DAIR repository for details regarding the simulator implementation.
+
+
 
 ## GenSign Extractor
 
@@ -56,15 +58,32 @@ python train_gensign.py \
 ```
 
 **Extracting Signature Noise**
-
 ```bash
 python extract_gensign.py \
     --input_dir /path/to/images \
     --output_dir /path/to/output \
     --checkpoint /path/to/gensign_extractor.pth
 ```
-
 The extracted results are saved in `output_dir` as `<original_filename>_noise.png`, with one extracted noise image per input image.
+
+
+## The Dual Detector
+### Pretrained Checkpoints
+
+We provide checkpoints trained on different datasets:
+
+| Training Data | Download |
+|---|---|
+| GenImage-SD1.4 | [Link](https://drive.google.com/file/d/13_gaGNLMXoiA4Wbg8IHFwPBtMHm4zloK/view?usp=drive_link) |
+| ProGAN (4-class) | [Link](https://drive.google.com/file/d/18unjmMmRUsGDhcYx8OyctZL0ytMR2wjZ/view?usp=drive_link) |
+| ProGAN (20-class) | [Link](https://drive.google.com/file/d/1zRL5934GDEnFtUUuSL59RukKjC_Pwfab/view?usp=drive_link) |
+
+### Notes
+
+- Using `1`/`0` as the label for fake images can lead to asymmetric results. We recommend using `1` as the label for **real** images.
+- Using the default threshold of `0.5` may produce results inconsistent with AUC and AP. We mainly report **AP** and **AUC**; computing accuracy (Acc) may require additional threshold calibration, as `0.5` may not be the optimal choice.
+
+
 
 ---
 
