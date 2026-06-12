@@ -96,8 +96,7 @@ During training, the model dynamically leverages the DAIR Simulator to perform t
 ### Training
 
 To train the Dual Detector, you must provide the pre-trained checkpoints for both the DAIR simulator (for data augmentation) and the GenSign Extractor (as the frozen feature extractor for Stream 2).
-
-**Training on GenImage:**
+Use **`train_dual_detector_progan_with_aug.py`** to enable image distortion augmentation.
 
 ```
 python train_genimg.py \
