@@ -19,7 +19,7 @@ from dual_model import DualStreamModel
 from datasets import load_genimg_eval_datasets
 from eval_utils import evaluate_basic
 from utils import format_time
-from model import DenoisingFCNWithSkip  # Assuming model.py contains this natively
+from gensign_extractor import DenoisingFCNWithSkip  # Assuming model.py contains this natively
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
