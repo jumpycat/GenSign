@@ -99,7 +99,7 @@ To train the Dual Detector, you must provide the pre-trained checkpoints for bot
 Use **`train_dual_detector_progan_with_aug.py`** to enable image distortion augmentation.
 
 ```
-python train_genimg.py \
+python train_dual_detector_genimg.py \
     --train_dir /path/to/GenImage/train \
     --val_dir /path/to/GenImage/val \
     --eval_datasets_root /path/to/GenImage/valdata \
@@ -113,7 +113,7 @@ python train_genimg.py \
 ```
 
 ```
-python train_progan.py \
+python train_dual_detector_progan.py \
     --train_dir /path/to/progan_train \
     --train_subfolders car cat chair horse \
     --ae_resume /path/to/dair_simulator.pth \
