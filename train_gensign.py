@@ -13,7 +13,7 @@ from torchvision.datasets import ImageFolder
 from torchvision.utils import save_image
 from datetime import datetime, timedelta
 import importlib
-from model import DenoisingFCNWithSkip
+from gensign_extractor import DenoisingFCNWithSkip
 import cv2
 from torch.utils.data import Dataset
 
