@@ -19,10 +19,10 @@ from datasets import CustomTrainDataset, ConditionalResize, get_ufd_eval_loaders
 from eval_utils import evaluate_advanced
 from utils import format_time
 try:
-    from model import DenoisingFCNWithSkip
+    from gensign_extractor import DenoisingFCNWithSkip
 except ImportError:
-    print("ERROR: Failed to import 'DenoisingFCNWithSkip' from 'model.py'.")
-    print("Please make sure 'model.py' is in the same directory.")
+    print("ERROR: Failed to import 'DenoisingFCNWithSkip' from 'gensign_extractor.py'.")
+    print("Please make sure 'gensign_extractor.py' is in the same directory.")
     sys.exit(1)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
