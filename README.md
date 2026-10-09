@@ -90,8 +90,8 @@ During training, the model dynamically leverages the DAIR Simulator to perform t
 - **`dual_model.py`**: Defines the `DualStreamModel` architecture, LoRA injection, and the feature fusion head.
 - **`datasets.py`**: Modularized dataset classes and loaders handling real/fake label mapping and transformations.
 - **`eval_utils.py` & `utils.py`**: Modular evaluation logic for computing Accuracy, AUC, and AP, alongside utility functions.
-- **`train_genimg.py`**: Training pipeline tailored for the GenImage dataset structure.
-- **`train_progan.py`**: Training pipeline tailored for the ProGAN dataset structure (e.g., CNNDetection) with multi-dataset evaluation.
+- **`train_dual_detector_genimg.py`**: Training pipeline tailored for the GenImage dataset structure.
+- **`train_dual_detector_progan.py`**: Training pipeline tailored for the ProGAN dataset structure (e.g., CNNDetection) with multi-dataset evaluation.
 
 ### Training
 
