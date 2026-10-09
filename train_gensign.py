@@ -43,7 +43,7 @@ def get_parser():
     parser.add_argument("--lr", type=float, default=3e-4)
     parser.add_argument("--steps", type=int, default=400010)
     parser.add_argument("--encoder_module", type=str, default="dair.encoder2")
-    parser.add_argument("--decoder_module", type=str, default="dair.decoder24_with_graph.py")
+    parser.add_argument("--decoder_module", type=str, default="dair.decoder24_with_graph")
 
 
     parser.add_argument("--log_freq", type=int, default=10)
